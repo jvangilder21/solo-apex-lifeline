@@ -9,6 +9,12 @@ function UserPage() {
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
+
+      <button className="btn">OVERALL STATS</button>
+      <button className="btn">RANKED</button>
+      <br/>
+      <br/>
+      <br/>
       <LogOutButton className="btn" />
     </div>
   );
