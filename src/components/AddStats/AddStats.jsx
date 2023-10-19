@@ -10,11 +10,24 @@ function AddStats(props) {
   const store = useSelector((store) => store);
   const [heading, setHeading] = useState('CHOOSE YOUR STATS');
 
+
+
   return (
     <div>
       <h2>{heading}</h2>
 
-      
+      <button className="btn">KD</button>
+      <button className="btn">REVIVES</button>
+      <button className="btn">WINS</button>
+      <button className="btn">KNOCKDOWNS</button>
+      <br/>
+      <br/>
+      <button className="btn">ASSISTS</button>
+      <button className="btn">DAMAGE DEALT</button>
+      <button className="btn">FINISHERS</button>
+      <button className="btn">HEADSHOTS</button>
+
+
     </div>
   );
 }

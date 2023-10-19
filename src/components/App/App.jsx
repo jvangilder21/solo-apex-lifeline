@@ -14,6 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
+import AddStats from '../AddStats/AddStats';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -61,6 +62,16 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
+
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/AddStats"
+          >
+            <AddStats />
+          </ProtectedRoute>
+          
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage

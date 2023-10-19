@@ -28,6 +28,10 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/overallStats">
+              Overall Stats 
+            </Link>
+
             <Link className="navLink" to="/info">
               Ranked Info 
             </Link>

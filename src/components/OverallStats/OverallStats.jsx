@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -9,7 +11,13 @@ function OverallStats(props) {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
   const store = useSelector((store) => store);
+  const history = useHistory();
+
   const [heading, setHeading] = useState('OVERALL STATS');
+
+  const AddStats = (event) => {
+    history.push('/AddStats')
+    }
 
   return (
     <div>
@@ -19,7 +27,7 @@ function OverallStats(props) {
       <br/>
 
       <button className="btn"
-      onClick={OverallStats} >ADD YOUR STATS</button>
+      onClick={AddStats} >ADD YOUR STATS</button>
       <button className="btn"
       onClick={OverallStats} >EDIT STATS</button>
       <br/>
