@@ -20,6 +20,9 @@ function OverallStats(props) {
   const AddStats = (event) => {
     history.push('/AddStats')
     }
+  const EditStats = (event) => {
+    history.push('/EditStats')
+    }
 
   return (
     <div>
@@ -31,7 +34,7 @@ function OverallStats(props) {
       <button className="btn"
       onClick={AddStats} >ADD YOUR STATS</button>
       <button className="btn"
-      onClick={OverallStats} >EDIT STATS</button>
+      onClick={EditStats} >EDIT STATS</button>
       <br/>
       <br/>
       <h2>MY STATS</h2>
