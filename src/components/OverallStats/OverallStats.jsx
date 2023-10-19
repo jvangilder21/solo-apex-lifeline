@@ -41,7 +41,7 @@ function OverallStats(props) {
       <br/>
       <br/>
 
-      <p>At some point we will add the functionality for when the stat we choose to 
+      <p className="statDisplay">At some point we will add the functionality for when the stat we choose to 
         add to our page will display here.</p>
 
     </div>

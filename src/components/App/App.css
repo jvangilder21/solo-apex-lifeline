@@ -7,7 +7,11 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background-color:rgb(249, 135, 199);
+  background-image: url("https://cdn.pixabay.com/photo/2020/04/12/20/37/abstract-5035778_1280.jpg");
+  background-size: cover;
+  background-position: no-repeat;
+  color: white;
+  
 }
 
 img {
@@ -15,12 +19,18 @@ img {
   max-width: 100%;
 }
 
+h2 {
+  background-color: #191818;
+  width: 300px;
+}
+
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
 
 .container {
-  padding: 20px;
+  padding: 30px;
+  margin: 20px;
 }
 
 /* --------------------------------------------------------------------------------
@@ -30,10 +40,10 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #0609c1;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: mediumslateblue;
+  background-color: rgb(25, 36, 241);
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -56,7 +66,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #1179e0;
   text-decoration: none;
 }
 
@@ -73,8 +83,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #1179e0;
+  color: #1179e0;
 }
 
 /* --------------------------------------------------------------------------------
