@@ -1,0 +1,10 @@
+p {
+width: 75%;
+height: 500px;
+background-color: rgb(241, 206, 161);
+margin: 20px;
+padding: 30px;
+border-radius: 20px;
+box-shadow: 5px 10px 6px black;
+
+}
