@@ -20,6 +20,7 @@ function UserPage() {
 
       <button className="btn"
       onClick={OverallStats} >OVERALL STATS</button>
+      
       <button className="btn">RANKED</button>
       <br/>
       <br/>
