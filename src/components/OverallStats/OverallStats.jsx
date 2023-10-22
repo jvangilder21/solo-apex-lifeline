@@ -31,9 +31,9 @@ function OverallStats(props) {
       <br/>
       <br/>
 
-      <button className="btn"
+      <button className="btnStats"
       onClick={AddStats} >ADD YOUR STATS</button>
-      <button className="btn"
+      <button className="btnStats"
       onClick={EditStats} >EDIT STATS</button>
       <br/>
       <br/>

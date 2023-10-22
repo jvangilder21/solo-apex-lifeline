@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const axios = require('axios');
+
 
 const app = express();
 
@@ -27,6 +29,20 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/overallStats', overallStatsRouter);
+
+// API GET ROUTE
+const api_key = process.env.API_KEY;
+
+app.get('/info', (req, res) => {
+  axios.get(`https://api.mozambiquehe.re/bridge?version=2&platform=PC&player=MissHazel21&auth=${api_key}`)
+  .then((response) => {
+      res.send(response.data)
+      console.log(response.data);
+  }).catch((error) => {
+      console.log('GET /info fail server:', error);
+      res.sendStatus(500);
+  })
+})
 
 // Serve static files
 app.use(express.static('build'));

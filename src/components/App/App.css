@@ -21,7 +21,13 @@ img {
 
 h2 {
   background-color: #191818;
-  width: 300px;
+  color: white;
+  width: max-content;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(5, 216, 239);
+
 }
 
 /* --------------------------------------------------------------------------------
@@ -29,8 +35,8 @@ Container
 -------------------------------------------------------------------------------- */
 
 .container {
-  padding: 30px;
-  margin: 20px;
+  padding: 0px;
+  margin: 0px;
 }
 
 /* --------------------------------------------------------------------------------
@@ -85,6 +91,38 @@ Button
   background-color: transparent;
   border-color: #1179e0;
   color: #1179e0;
+}
+
+
+.btnHome {
+  display: inline-block;
+  padding: 40px;
+  border-color: #0609c1;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: rgb(25, 36, 241);
+  color: #f8f8f8;
+  font-size: 3.1rem;
+  outline: 0;
+  cursor: pointer;
+}
+
+.btnHome:hover {
+  background-color: #1179e0;
+  text-decoration: none;
+}
+
+.btnStats {
+  display: inline-block;
+  padding: 35px;
+  border-color: #0609c1;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: rgb(25, 36, 241);
+  color: #f8f8f8;
+  font-size: 2.1rem;
+  outline: 0;
+  cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------------

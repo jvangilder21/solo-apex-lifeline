@@ -18,10 +18,10 @@ function UserPage() {
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
 
-      <button className="btn"
+      <button className="btnHome"
       onClick={OverallStats} >OVERALL STATS</button>
-      
-      <button className="btn">RANKED</button>
+
+      <button className="btnHome">RANKED</button>
       <br/>
       <br/>
       <br/>
