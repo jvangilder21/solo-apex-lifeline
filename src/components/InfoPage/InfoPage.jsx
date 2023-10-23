@@ -11,38 +11,55 @@ function InfoPage() {
 
   const [heading, setHeading] = useState('RANKED BREAKDOWN');
 
-  const[theStats, setTheStats] = useState([]);
+  // const[theStats, setTheStats] = useState([]);
+  const[theStats, setTheStats] = useState({});
+
 
   useEffect(() => {
-    fetchStats()
-
-  }, [])
+    fetchStats();
+  }, []);
 
   const fetchStats = () => {
     console.log("Running FetchStats");
     axios.get('/info')
     .then((response) => {
       const apiResponse = response.data;
-      console.log('API response', apiResponse)
-      setTheStats(apiResponse.data)
+      const totalData = response.data.total;
+
+      console.log('API response', apiResponse.data)
+      console.log('totalData log', totalData)
+      setTheStats(apiResponse)
+      // setTheStats(totalData);
+      // console.log();
     }).catch((error) => {
       console.log('axios get error', error);
     })
   }
-
+  
+    console.log('theStats log', theStats);
   return (
     <div className="container">
       <h2>{heading}</h2>
       <br/>
       <br/>
-      <h4><i>APIS</i></h4>
+      <h4><i>STATS LOADING</i></h4>
 
-      {/* {theStats.map((stat) => {
-          return <img key={stat.id} src={stat.images.fixed_height.url} alt={stat.title}/> 
-        })} */}
+      <div>
+        <p>Kills: {theStats.total && theStats.total.kills.value}</p>
+        <p>Headshots: {theStats.total && theStats.total.headshots.value}</p>
+        <p>Damage: {theStats.total &&  theStats.total.damage.value}</p>
+        <p>Executions: {theStats.total && theStats.total.executions.value}</p>
+        <p>Revives: {theStats.total && theStats.total.revives.value}</p>
+        <p>KD: {theStats.total && theStats.total.kd.value}</p>
+
+      </div>
+     
+        {/* {theStats.map((stat, index) => (
+        <p key={index}>{stat.total}</p>
+      ))} */}
 
     </div>
-  );
+  ); 
 }
 
 export default InfoPage;
