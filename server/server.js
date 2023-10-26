@@ -33,7 +33,7 @@ app.use('/api/overallStats', overallStatsRouter);
 // API GET ROUTE
 const api_key = process.env.API_KEY;
 
-app.get('/info', (req, res) => {
+app.get('/AddStats', (req, res) => {
   axios.get(`https://api.mozambiquehe.re/bridge?version=2&platform=PC&player=MissHazel21&auth=${api_key}`)
   .then((response) => {
     // TODO: Insert into database (stretch)

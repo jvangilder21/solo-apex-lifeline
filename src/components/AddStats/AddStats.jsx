@@ -39,11 +39,11 @@ function AddStats(props) {
 
    const fetchStats = () => {
     console.log("Running FetchStats");
-    axios.get('/info')
+    axios.get('/AddStats')
     .then((response) => {
       const apiResponse = response.data;
       const totalData = response.data.total;
-
+     
       console.log('API response', apiResponse.data)
       console.log('totalData log', totalData)
       setTheStats(totalData)
