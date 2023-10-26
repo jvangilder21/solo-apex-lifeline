@@ -8,3 +8,16 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+-- Latest stats table:
+CREATE TABLE stats (
+	id SERIAL PRIMARY KEY,
+	user_id INT NOT NULL, 
+	kills INT,
+	headshots INT,
+	damage INT,
+	executions INT, 
+	revives INT,
+	kd INT,
+	display_order INT
+);

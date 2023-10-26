@@ -17,7 +17,18 @@ function InfoPage() {
 
   useEffect(() => {
     fetchStats();
+    // fetchOrder();
   }, []);
+
+  const fetchOrder = () => {
+    axios.get('/stats').then((response) => {
+      if (response.data.length > 0) {
+        fetchStats();
+      } else {
+        alert('Please select stats!');
+      }
+    })
+  }
 
   const fetchStats = () => {
     console.log("Running FetchStats");
@@ -28,7 +39,7 @@ function InfoPage() {
 
       console.log('API response', apiResponse.data)
       console.log('totalData log', totalData)
-      setTheStats(apiResponse)
+      setTheStats(totalData)
       // setTheStats(totalData);
       // console.log();
     }).catch((error) => {
@@ -44,15 +55,18 @@ function InfoPage() {
       <br/>
       <h4><i>STATS LOADING</i></h4>
 
-      <div>
-        <p>Kills: {theStats.total && theStats.total.kills.value}</p>
-        <p>Headshots: {theStats.total && theStats.total.headshots.value}</p>
-        <p>Damage: {theStats.total &&  theStats.total.damage.value}</p>
-        <p>Executions: {theStats.total && theStats.total.executions.value}</p>
-        <p>Revives: {theStats.total && theStats.total.revives.value}</p>
-        <p>KD: {theStats.total && theStats.total.kd.value}</p>
+{/* Are the stats defined? Do they have at least one property? */}
 
+      <div>
+        <p>Kills: {theStats?.kills?.value || 'Loading...'}</p>
+        <p>Headshots: {theStats?.headshots?.value}</p>
+        <p>Damage: {theStats?.damage?.value}</p>
+        <p>Executions: {theStats?.executions?.value}</p>
+        <p>Revives: {theStats?.revives?.value}</p>
+        <p>KD: {theStats?.kd?.value}</p>
       </div>
+
+
      
         {/* {theStats.map((stat, index) => (
         <p key={index}>{stat.total}</p>
