@@ -60,4 +60,43 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+// PUT route code here
+
+  const {statsData} = req.body;
+
+  const queryText = `
+    UPDATE "stats" 
+    SET "kills" = $2, "headshots" = $3, "damage" = $4,
+    "executions" = $5, "revives" = $6, "kd" = $7
+    WHERE "id" = $1 AMD "user_id" = $8
+    RETURNING *;`;
+
+    const values = [
+      req.params.id, 
+      statsData[0],
+      statsData[1],
+      statsData[2],
+      statsData[3],
+      statsData[4],
+      statsData[5],
+      req.user.id
+    ];
+    pool.query(queryText, values)
+    .then((result) => {
+      if (result.rowCount === 0) {
+        res.sendStatus('Stats not updated ', 404)
+      } else {
+        res.sendStatus(result.rows[0]);
+      } 
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus('error updating stats', 500);
+    })
+
+})
+
+
+
 module.exports = router;
