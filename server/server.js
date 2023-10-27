@@ -14,6 +14,8 @@ const userRouter = require('./routes/user.router');
 
 //OVERALL STATS ROUTER
 const overallStatsRouter = require('./routes/overallStats.router');
+//ADD STATS ROUTER
+const addStatsRouter = require('./routes/addStats.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +31,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/overallStats', overallStatsRouter);
+app.use('/AddStats', addStatsRouter)
 
 // API GET ROUTE
 const api_key = process.env.API_KEY;

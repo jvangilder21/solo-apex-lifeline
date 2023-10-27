@@ -97,6 +97,24 @@ router.put('/:id', (req, res) => {
 
 })
 
+router.delete('/:id', (req, res) => {
+  const queryText = `DELETE FROM "stats" WHERE "id" = $1 
+  AND "user_id" = $2;`;
 
+  const values = [req.params.id, req.user.id];
+
+  pool.query(queryText, values)
+  .then((result) => {
+    if (result.rowCount === 0 ) {
+      res.sendStatus('Stats not found', 404);
+    } else {
+      res.sendStatus('Stats deleted', 201);
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus('Error deleting stat', 500);
+  })
+})
 
 module.exports = router;
