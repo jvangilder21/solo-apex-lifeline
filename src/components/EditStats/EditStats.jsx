@@ -18,26 +18,33 @@ function EditStats(props) {
     history.push('/overallStats')
     }
 
+  const saveToOverallStats = () => {
+    history.push('/overallStats')
+  }
+
   return (
     <div>
       <h2>{heading}</h2>
 
-      <button className="btnStats">KD</button>
-      <button className="btnStats">REVIVES</button>
-      <button className="btnStats">WINS</button>
-      <button className="btnStats">KNOCKDOWNS</button>
-      <br/>
-      <br/>
-      <button className="btnStats">ASSISTS</button>
-      <button className="btnStats">DAMAGE DEALT</button>
-      <button className="btnStats">FINISHERS</button>
+  
+      <button className="btnStats">KILLS</button>
       <button className="btnStats">HEADSHOTS</button>
+      <button className="btnStats">DAMAGE</button>
+      <br/>
+      <br/>
+      <button className="btnStats">REVIVES</button>
+      <button className="btnStats">EXECUTIONS</button>
+      <button className="btnStats">KD</button>
       <br/>
       <br/>
       <br/>
       <br/>
       <button className="btn"
       onClick={OverallStats}>BACK</button>
+      <br/>
+      <br/>
+      <button className="btn" onClick={saveToOverallStats}>SAVE</button>
+
     </div>
   );
 }

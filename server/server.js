@@ -31,12 +31,12 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/overallStats', overallStatsRouter);
-app.use('/AddStats', addStatsRouter)
+app.use('/api/AddStats', addStatsRouter)
 
 // API GET ROUTE
 const api_key = process.env.API_KEY;
 
-app.get('/AddStats', (req, res) => {
+app.get('/api/AddStats', (req, res) => {
   axios.get(`https://api.mozambiquehe.re/bridge?version=2&platform=PC&player=MissHazel21&auth=${api_key}`)
   .then((response) => {
     // TODO: Insert into database (stretch)
@@ -47,6 +47,9 @@ app.get('/AddStats', (req, res) => {
       res.sendStatus(500);
   })
 })
+
+
+
 
 // Serve static files
 app.use(express.static('build'));

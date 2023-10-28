@@ -29,7 +29,6 @@ function AddStats(props) {
   
 
   const handleStatSelection = (stat) => {
-    // setSelectedStats((prevSelectedStats) => {
       if (selectedStats.includes(stat)) {
         setSelectedStats(selectedStats.filter((selectedStat) => selectedStat !== stat));
       } else {
@@ -54,7 +53,7 @@ function AddStats(props) {
 
    const fetchStats = () => {
     console.log("Running FetchStats");
-    axios.get('/AddStats')
+    axios.get('/api/AddStats')
     .then((response) => {
       const apiResponse = response.data;
       const totalData = response.data.total;
@@ -76,14 +75,14 @@ function AddStats(props) {
       <h2>{heading}</h2>
 
 
-      <button className="btnStats" onClick={() => handleStatSelection('KILLS')}>KILLS</button>
-      <button className="btnStats" onClick={() => handleStatSelection('HEADSHOTS')}>HEADSHOTS</button>
-      <button className="btnStats" onClick={() => handleStatSelection('DAMAGE')}>DAMAGE</button>
+      <button className="btnStats" onClick={() => handleStatSelection('KILLS')}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection('HEADSHOTS')}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection('DAMAGE')}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
       <br/>
       <br/>
-      <button className="btnStats" onClick={() => handleStatSelection('EXECUTIONS')}>EXECUTIONS</button>
-      <button className="btnStats" onClick={() => handleStatSelection('REVIVES')}>REVIVES</button>
-      <button className="btnStats" onClick={() => handleStatSelection('KD')}>KD</button>
+      <button className="btnStats" onClick={() => handleStatSelection('EXECUTIONS')}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection('REVIVES')}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection('KD')}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
 
       <br/>
       <br/>

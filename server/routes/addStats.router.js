@@ -4,6 +4,8 @@ const router = express.Router();
 const axios = require('axios');
 require('dotenv').config();
 
+
+// GET route
 router.get('/', (req, res) => {
 
     const api_key = process.env.API_KEY;
@@ -18,6 +20,8 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+// POST route
 
 
 module.exports = router;
