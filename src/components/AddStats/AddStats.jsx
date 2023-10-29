@@ -26,19 +26,26 @@ function AddStats(props) {
   const saveToOverallStats = () => {
     // dispatch(setSelectedStats(preStat));
 
+    const selectedStatsValues = selectedStats.map((stat) => stat.value);
+
+    // const selectedStatsValues = 
+
+    console.log(selectedStatsValues);
     // dispatching the selectedStats to the redux store.
-    dispatch({type: 'SET_SELECTED_STATS', payload: selectedStats})
+    // dispatch({type: 'SET_SELECTED_STATS', payload: savedStats})
     // console.log('THIS IS OUR selectedStats', preStat);.
 
     // Making a POST reqeust to save the selected Stats in the database
-    axios.post('/api/OverallStats', {statsData: selectedStats})
+    console.log('logging the selectedStats.value', savedStats);
+    // axios.post('/api/OverallStats', {statsData: selectedStatsValues})
+    axios.post('/api/OverallStats', savedStats)
     .then((response) => {
       console.log('Stats saved to the database!!');
     })
     .catch((error) => {
-      console.log('Error saving stats:', error);
+      console.log('POSTaxios: Error saving stats:', error);
     })
-    // Pushing the user back to the overallStats page
+    // // Pushing the user back to the overallStats page
     history.push('/overallStats')
   }
   
@@ -48,13 +55,20 @@ function AddStats(props) {
       // const stat = type + ' ' + preStat;
       console.log('THIS IS OUR STAT', stat);
       // console.log('THIS IS OUR preSTAT', preStat);
-      
-      if (selectedStats.includes(stat)) {
-        setSelectedStats(selectedStats.filter((selectedStat) => selectedStat !== stat));
+
+      if (selectedStats.some((selectedStat) => selectedStat.name === stat.name)) {
+        setSelectedStats(selectedStats.filter((selectedStat) => selectedStat.name !== stat.name));
       } else {
         setSelectedStats([...selectedStats, stat]);
         console.log(selectedStats);
       }
+      
+      // if (selectedStats.includes(stat)) {
+      //   setSelectedStats(selectedStats.filter((selectedStat) => selectedStat !== stat));
+      // } else {
+      //   setSelectedStats([...selectedStats, stat]);
+      //   console.log(selectedStats);
+      // }
   };
 
   useEffect(() => {
@@ -82,8 +96,24 @@ function AddStats(props) {
       console.log('totalData log', totalData)
       setTheStats(totalData)
     }).catch((error) => {
-      console.log('axios get error', error);
+      console.log('GETaxios get error', error);
     })
+  }
+
+  const [kills, setKills] = useState([]);
+  const [headshots, setHeadshots] = useState([]);
+  const [damage, setDamage] = useState([]);
+  const [executions, setExecutions] = useState([]);
+  const [revives, setRevives] = useState([]);
+  const [kd, setKd] = useState([]);
+
+  const savedStats = {
+    kills: theStats?.kills?.value,
+    headshots: theStats?.headshots?.value,
+    damage: theStats?.damage?.value,
+    executions: theStats?.executions?.value,
+    revives: theStats?.revives?.value,
+    kd: theStats?.kd?.value
   }
 
   console.log('theStats log', theStats);
@@ -93,14 +123,23 @@ function AddStats(props) {
       <h2>{heading}</h2>
 
 
-      <button className="btnStats" onClick={() => handleStatSelection({name: 'KILLS', value: theStats.kills.value})}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
+      {/* <button className="btnStats" onClick={() => handleStatSelection({name: 'KILLS', value: theStats?.kills?.value})}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'HEADSHOTS', value: theStats?.headshots?.value})}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => handleStatSelection({name:'DAMAGE', value: theStats?.damage?.value})}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'DAMAGE', value: theStats?.damage?.value})}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
       <br/>
       <br/>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'EXECUTIONS', value: theStats?.executions?.value})}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'REVIVES', value: theStats?.revives?.value})}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button> */}
+
+      <button className="btnStats" onClick={() => handleStatSelection(setKills(theStats?.kills?.value))}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => setHeadshots(theStats?.headshots?.value)}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => setDamage(theStats?.damage?.value)}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
+      <br/>
+      <br/>
+      <button className="btnStats" onClick={() => setExecutions(theStats?.executions?.value)}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => setRevives(theStats?.revives?.value)}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
+      {/* <button className="btnStats" onClick={() => setKd(theStats?.kd?.value)}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button> */}
 
       <br/>
       <br/>
@@ -112,26 +151,41 @@ function AddStats(props) {
       <h4><i>SELECTED STATS:</i></h4>
       {/* {JSON.stringify(selectedStats[0])} */}
 
+    
+      <button className={`btnStats ${selectedStats.some(stat => stat.name === 'KILLS') 
+      ? 'selected' : ''}`} onClick={() => handleStatSelection({ name: 'KILLS', value: theStats?.kills?.value })}>
+        KILLS <br />
+        {theStats?.kills?.value || 'Loading...'}
+      </button>
+     
+
         {selectedStats.map((stat) => (
-        <p key={stat}>{stat.name} : {stat.value}</p>
+        <p key={stat.name}>{stat.name} : {stat.value}</p>
         ))}
+
+      <div>
+        {savedStats!== null && (
+        <p>Headshots: {savedStats.headshots}</p>
+ 
+        )}
+      </div>   
 
       <button className="btn" onClick={saveToOverallStats}>SAVE</button>
 
       <br/>
       <br/>
-      <h4><i>STATS LOADING</i></h4>
+      {/* <h4><i>STATS LOADING</i></h4> */}
 
       {/* Are the stats defined? Do they have at least one property? */}
 
-      <div>
+      {/* <div>
           <p>Kills: {theStats?.kills?.value || 'Loading...'}</p>
           <p>Headshots: {theStats?.headshots?.value || 'Loading...'}</p>
           <p>Damage: {theStats?.damage?.value || 'Loading...'}</p>
           <p>Executions: {theStats?.executions?.value || 'Loading...'}</p>
           <p>Revives: {theStats?.revives?.value || 'Loading...'}</p>
           <p>KD: {theStats?.kd?.value || 'Loading...'}</p>
-      </div>
+      </div> */}
 
 
   </div>

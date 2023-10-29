@@ -10,12 +10,13 @@ router.get('/', (req, res) => {
 
     // Query to retreive stats ordered by display_order
     const queryText = `
-    SELECT id, kills, headshots, damage, executions, revives, kd 
+    SELECT id, kills, headshots, damage, executions, revives,  
     FROM "stats" 
     WHERE "user_id" = $1
     ORDER BY display_order;`;
     pool.query(queryText, [userId])
     .then((result) => {
+
       console.log('Database query successful');
       console.log('Result:', result.rows);
       res.send(result.rows);
@@ -29,30 +30,64 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
+// router.post('/', (req, res) => {
+//   // POST route code here
+
+//   const {statsData} = req.body;
+//   console.log(req.body);
+
+//   const queryText = `
+//     INSERT INTO "stats" ("user_id", "kills", "headshots", 
+//     "damage", "executions", "revives", "kd")
+//     VALUES ( $1, $2, $3, $4, $5, $6, $7)
+//     RETURNING *;`;
+
+//     const values = [
+//       req.user.id, 
+//       statsData.total?.kills.value,
+//       statsData.total?.headshots.value,
+//       statsData.total?.damage.value,
+//       statsData.total?.executions.value,
+//       statsData.total?.revives.value,
+//       statsData.total?.kd.value
+//     ];
+//     pool.query(queryText, values)
+//     .then((result) => {
+//       res.sendStatus(result.rows[0]);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       res.sendStatus(500);
+//     });
+// });
+
 router.post('/', (req, res) => {
   // POST route code here
 
-  const {statsData} = req.body;
-  console.log(req.body);
-
+  const statsData = req.body;
+  console.log('This is from the POST route:', req.body);
+  console.log('statsData.total', statsData)
+  console.log('kills value:', req.body.kills);
+  
+  
   const queryText = `
     INSERT INTO "stats" ("user_id", "kills", "headshots", 
-    "damage", "executions", "revives", "kd")
-    VALUES ( $1, $2, $3, $4, $5, $6, $7)
+    "damage", "executions", "revives")
+    VALUES ( $1, $2, $3, $4, $5, $6)
     RETURNING *;`;
 
     const values = [
       req.user.id, 
-      statsData.total[0].value,
-      statsData.total[1].value,
-      statsData.total[2].value,
-      statsData.total[3].value,
-      statsData.total[4].value,
-      statsData.total[5].value
+      statsData.kills,
+      statsData.headshots,
+      statsData.damage,
+      statsData.executions,
+      statsData.revives,
+      // statsData.kd
     ];
     pool.query(queryText, values)
     .then((result) => {
-      res.sendStatus(result.rows[0]);
+      res.sendStatus(201);
     })
     .catch((error) => {
       console.log(error);
@@ -87,7 +122,7 @@ router.put('/:id', (req, res) => {
       if (result.rowCount === 0) {
         res.sendStatus('Stats not updated ', 404)
       } else {
-        res.sendStatus(result.rows[0]);
+        res.sendStatus(201);
       } 
     })
     .catch((error) => {

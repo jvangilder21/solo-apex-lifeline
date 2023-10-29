@@ -48,6 +48,18 @@ app.get('/api/AddStats', (req, res) => {
   })
 })
 
+// app.post('/api/AddStats', (req, res) => {
+//   console.log(request);
+//   // const statsData = req.params;
+//   axios.get(`https://api.mozambiquehe.re/bridge?version=2&platform=PC&player=MissHazel21&auth=${api_key}`)
+//   .then((response) => {
+//       res.send(response.data)
+//       console.log(response.data);
+//   }).catch((error) => {
+//       console.log('GET /info fail server:', error);
+//       res.sendStatus(500);
+//   })
+// })
 
 
 
