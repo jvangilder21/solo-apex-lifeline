@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   // GET route code here
-  console.log('/overallStats GET route');
+  console.log('/OverallStats GET route');
     const userId = req.user.id;
 
     // Query to retreive stats ordered by display_order
@@ -43,12 +43,12 @@ router.post('/', (req, res) => {
 
     const values = [
       req.user.id, 
-      statsData[0],
-      statsData[1],
-      statsData[2],
-      statsData[3],
-      statsData[4],
-      statsData[5]
+      statsData.total[0].value,
+      statsData.total[1].value,
+      statsData.total[2].value,
+      statsData.total[3].value,
+      statsData.total[4].value,
+      statsData.total[5].value
     ];
     pool.query(queryText, values)
     .then((result) => {

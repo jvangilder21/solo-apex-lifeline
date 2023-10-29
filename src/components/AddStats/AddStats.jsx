@@ -15,7 +15,7 @@ function AddStats(props) {
   
 
   const [heading, setHeading] = useState('CHOOSE YOUR STATS');
-  const[theStats, setTheStats] = useState({});
+  const [theStats, setTheStats] = useState({});
   const [selectedStats, setSelectedStats] = useState([]);
 
 
@@ -25,8 +25,20 @@ function AddStats(props) {
 
   const saveToOverallStats = () => {
     // dispatch(setSelectedStats(preStat));
+
+    // dispatching the selectedStats to the redux store.
     dispatch({type: 'SET_SELECTED_STATS', payload: selectedStats})
-    // console.log('THIS IS OUR selectedStats', preStat);
+    // console.log('THIS IS OUR selectedStats', preStat);.
+
+    // Making a POST reqeust to save the selected Stats in the database
+    axios.post('/api/OverallStats', {statsData: selectedStats})
+    .then((response) => {
+      console.log('Stats saved to the database!!');
+    })
+    .catch((error) => {
+      console.log('Error saving stats:', error);
+    })
+    // Pushing the user back to the overallStats page
     history.push('/overallStats')
   }
   
@@ -65,14 +77,10 @@ function AddStats(props) {
     console.log("Running FetchStats");
     axios.get('/api/AddStats')
     .then((response) => {
-      // const apiResponse = response.data;
       const totalData = response.data.total;
      
-      // console.log('API response', apiResponse.data)
       console.log('totalData log', totalData)
       setTheStats(totalData)
-      // setTheStats(totalData);
-      // console.log();
     }).catch((error) => {
       console.log('axios get error', error);
     })

@@ -30,7 +30,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/overallStats', overallStatsRouter);
+app.use('/api/OverallStats', overallStatsRouter);
 app.use('/api/AddStats', addStatsRouter)
 
 // API GET ROUTE
