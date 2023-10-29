@@ -69,7 +69,7 @@ router.put('/:id', (req, res) => {
     UPDATE "stats" 
     SET "kills" = $2, "headshots" = $3, "damage" = $4,
     "executions" = $5, "revives" = $6, "kd" = $7
-    WHERE "id" = $1 AMD "user_id" = $8
+    WHERE "id" = $1 AND "user_id" = $8
     RETURNING *;`;
 
     const values = [

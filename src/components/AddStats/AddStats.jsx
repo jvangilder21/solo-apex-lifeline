@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -12,32 +11,43 @@ function AddStats(props) {
   // a default value of 'Functional Component'
   const store = useSelector((store) => store);
   const history = useHistory();
+  const dispatch = useDispatch();
+  
 
   const [heading, setHeading] = useState('CHOOSE YOUR STATS');
-
-    // const[theStats, setTheStats] = useState([]);
   const[theStats, setTheStats] = useState({});
   const [selectedStats, setSelectedStats] = useState([]);
+
 
   const backToOverallStats = (event) => {
     history.push('/overallStats')
   }
 
   const saveToOverallStats = () => {
-    history.push('/overallStats', {selectedStats})
+    // dispatch(setSelectedStats(preStat));
+    dispatch({type: 'SET_SELECTED_STATS', payload: selectedStats})
+    // console.log('THIS IS OUR selectedStats', preStat);
+    history.push('/overallStats')
   }
   
 
   const handleStatSelection = (stat) => {
+    // console.log(type, preStat);
+      // const stat = type + ' ' + preStat;
+      console.log('THIS IS OUR STAT', stat);
+      // console.log('THIS IS OUR preSTAT', preStat);
+      
       if (selectedStats.includes(stat)) {
         setSelectedStats(selectedStats.filter((selectedStat) => selectedStat !== stat));
       } else {
         setSelectedStats([...selectedStats, stat]);
+        console.log(selectedStats);
       }
   };
 
   useEffect(() => {
     fetchStats();
+    // dispatch({type: 'FETCH_SELECTED_STATS'});
     // fetchOrder();
   }, []);
 
@@ -55,10 +65,10 @@ function AddStats(props) {
     console.log("Running FetchStats");
     axios.get('/api/AddStats')
     .then((response) => {
-      const apiResponse = response.data;
+      // const apiResponse = response.data;
       const totalData = response.data.total;
      
-      console.log('API response', apiResponse.data)
+      // console.log('API response', apiResponse.data)
       console.log('totalData log', totalData)
       setTheStats(totalData)
       // setTheStats(totalData);
@@ -75,14 +85,14 @@ function AddStats(props) {
       <h2>{heading}</h2>
 
 
-      <button className="btnStats" onClick={() => handleStatSelection('KILLS')}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => handleStatSelection('HEADSHOTS')}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => handleStatSelection('DAMAGE')}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'KILLS', value: theStats.kills.value})}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'HEADSHOTS', value: theStats?.headshots?.value})}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection({name:'DAMAGE', value: theStats?.damage?.value})}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
       <br/>
       <br/>
-      <button className="btnStats" onClick={() => handleStatSelection('EXECUTIONS')}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => handleStatSelection('REVIVES')}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => handleStatSelection('KD')}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'EXECUTIONS', value: theStats?.executions?.value})}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'REVIVES', value: theStats?.revives?.value})}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
 
       <br/>
       <br/>
@@ -92,9 +102,10 @@ function AddStats(props) {
       <br/>
       <br/>
       <h4><i>SELECTED STATS:</i></h4>
+      {/* {JSON.stringify(selectedStats[0])} */}
 
         {selectedStats.map((stat) => (
-        <p key={stat}>{stat}</p>
+        <p key={stat}>{stat.name} : {stat.value}</p>
         ))}
 
       <button className="btn" onClick={saveToOverallStats}>SAVE</button>

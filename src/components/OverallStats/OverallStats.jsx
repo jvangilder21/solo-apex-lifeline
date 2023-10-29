@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './OverallStats.css';
-
-
+import logger from 'redux-logger';
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -17,7 +16,8 @@ function OverallStats(props) {
 
   const [heading, setHeading] = useState('OVERALL STATS');
 
-  // const selectedStats = ;
+  const selectedStats = useSelector((store) => store.selectedStatsReducer.selectedStats); 
+  console.log(selectedStats);
 
   const AddStats = (event) => {
     history.push('/AddStats')
@@ -43,21 +43,21 @@ function OverallStats(props) {
       <br/>
       <br/>
 
-      <p className="statDisplay">Please select Add Stats to add stats to this page!
-        {/* {selectedStats.length > 0 ? (
+      <p className="statDisplay"> 
+      
+        {selectedStats && selectedStats.length > 0 ? (
           // This will display selected stats if there are any.
           <div>
             <p>Selected Stats:</p>
             {selectedStats.map((stat, index) => (
-              <p key={index}>{stat}</p>
+              <p key={index}>{stat.name}: {stat.value}</p>
             ))}
           </div>
-        ) : (
+         ) : (
           // Message if not stats are selected
           <p>Please select Add Stats to add stats to this page!</p>
-        )} */}
+        )} 
       </p>
-        
 
     </div>
   );

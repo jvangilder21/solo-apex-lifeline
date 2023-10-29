@@ -1,19 +1,33 @@
 import { combineReducers } from 'redux';
-// const initialState = {
-//     selectedStats: [],
-// };
 
 
-const selectedStats = (state = [], action) => {
+const selectedStats = (state = {}, action) => {
     switch (action.type) {
       case 'SET_SELECTED_STATS':
         return action.payload;
-      case 'UNSET_SELECTED_STATS':
-        return [];
       default:
         return state;
     }
   };
+
+// const selectedStats = (state = [], action) => {
+//     switch (action.type) {
+//       case 'ADD_SELECTED_STATS':
+//         return {
+//             ...state, 
+//             selectedStats: action.payload,
+//         };
+//       case 'UNSET_SELECTED_STATS':
+//         return {
+//             ...state, 
+//             selectedStats: [],
+//         };
+//       default:
+//         return state;
+//     }
+//   };
+
+
 
   //combine reducers
 export default combineReducers({
