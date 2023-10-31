@@ -65,9 +65,9 @@ router.post('/', (req, res) => {
   // POST route code here
 
   const statsData = req.body;
-  console.log('This is from the POST route:', req.body);
-  console.log('statsData.total', statsData)
-  console.log('kills value:', req.body.kills);
+  // console.log('This is from the POST route:', req.body);
+  // console.log('statsData.total', statsData)
+  // console.log('kills value:', req.body.kills);
   
   
   const queryText = `
@@ -97,24 +97,27 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
 // PUT route code here
-
-  const {statsData} = req.body;
+  let {id} = req.params.id;
+  const statsData = req.body;
+  console.log('This is from the POST route:', req.body);
+  console.log('kills value:', req.body.kills);
 
   const queryText = `
     UPDATE "stats" 
-    SET "kills" = $2, "headshots" = $3, "damage" = $4,
-    "executions" = $5, "revives" = $6, "kd" = $7
-    WHERE "id" = $1 AND "user_id" = $8
+    SET "kills" = $1, "headshots" = $2, "damage" = $3,
+    "executions" = $4, "revives" = $5, 
+    WHERE "id" = $6 AND "user_id" = $7
     RETURNING *;`;
 
     const values = [
+      
+      statsData.kills,
+      statsData.headshots,
+      statsData.damage,
+      statsData.executions,
+      statsData.revives,
+      // statsData.kd,
       req.params.id, 
-      statsData[0],
-      statsData[1],
-      statsData[2],
-      statsData[3],
-      statsData[4],
-      statsData[5],
       req.user.id
     ];
     pool.query(queryText, values)
@@ -133,6 +136,7 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
+  
   const queryText = `DELETE FROM "stats" WHERE "id" = $1 
   AND "user_id" = $2;`;
 

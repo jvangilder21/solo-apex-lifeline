@@ -24,21 +24,17 @@ function AddStats(props) {
   }
 
   const saveToOverallStats = () => {
-    // dispatch(setSelectedStats(preStat));
+    // const selectedStatsValues = selectedStats.map((stat) => stat.value);
+    // console.log(selectedStatsValues);
 
-    const selectedStatsValues = selectedStats.map((stat) => stat.value);
-
-    // const selectedStatsValues = 
-
-    console.log(selectedStatsValues);
     // dispatching the selectedStats to the redux store.
-    // dispatch({type: 'SET_SELECTED_STATS', payload: savedStats})
+    dispatch({type: 'SET_SELECTED_STATS', payload: selectedStats})
     // console.log('THIS IS OUR selectedStats', preStat);.
 
     // Making a POST reqeust to save the selected Stats in the database
-    console.log('logging the selectedStats.value', savedStats);
+    console.log('logging the savedStats', savedStats);
     // axios.post('/api/OverallStats', {statsData: selectedStatsValues})
-    axios.post('/api/OverallStats', savedStats)
+    axios.post(`/api/OverallStats`, savedStats)
     .then((response) => {
       console.log('Stats saved to the database!!');
     })
@@ -46,15 +42,14 @@ function AddStats(props) {
       console.log('POSTaxios: Error saving stats:', error);
     })
     // // Pushing the user back to the overallStats page
+    history.push('/EditStats')
     history.push('/overallStats')
+    
   }
   
 
   const handleStatSelection = (stat) => {
-    // console.log(type, preStat);
-      // const stat = type + ' ' + preStat;
       console.log('THIS IS OUR STAT', stat);
-      // console.log('THIS IS OUR preSTAT', preStat);
 
       if (selectedStats.some((selectedStat) => selectedStat.name === stat.name)) {
         setSelectedStats(selectedStats.filter((selectedStat) => selectedStat.name !== stat.name));
@@ -123,24 +118,26 @@ function AddStats(props) {
       <h2>{heading}</h2>
 
 
-      {/* <button className="btnStats" onClick={() => handleStatSelection({name: 'KILLS', value: theStats?.kills?.value})}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'KILLS', value: theStats?.kills?.value})}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'HEADSHOTS', value: theStats?.headshots?.value})}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'DAMAGE', value: theStats?.damage?.value})}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
       <br/>
       <br/>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'EXECUTIONS', value: theStats?.executions?.value})}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'REVIVES', value: theStats?.revives?.value})}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button> */}
+      <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
 
-      <button className="btnStats" onClick={() => handleStatSelection(setKills(theStats?.kills?.value))}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => setHeadshots(theStats?.headshots?.value)}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
+      {/* <button className="btnStats" onClick={() => handleStatSelection(setKills(theStats?.kills?.value))}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button> */}
+      {/* <button className="btnStats" onClick={() => setHeadshots(theStats?.headshots?.value)}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => setDamage(theStats?.damage?.value)}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
       <br/>
       <br/>
       <button className="btnStats" onClick={() => setExecutions(theStats?.executions?.value)}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => setRevives(theStats?.revives?.value)}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
+      <button className="btnStats" onClick={() => setRevives(theStats?.revives?.value)}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button> */}
       {/* <button className="btnStats" onClick={() => setKd(theStats?.kd?.value)}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button> */}
 
+      <br/>
+      <br/>
       <br/>
       <br/>
 
@@ -150,33 +147,17 @@ function AddStats(props) {
       <br/>
       <h4><i>SELECTED STATS:</i></h4>
       {/* {JSON.stringify(selectedStats[0])} */}
-
-    
-      <button className={`btnStats ${selectedStats.some(stat => stat.name === 'KILLS') 
-      ? 'selected' : ''}`} onClick={() => handleStatSelection({ name: 'KILLS', value: theStats?.kills?.value })}>
-        KILLS <br />
-        {theStats?.kills?.value || 'Loading...'}
-      </button>
      
-
         {selectedStats.map((stat) => (
         <p key={stat.name}>{stat.name} : {stat.value}</p>
         ))}
 
-      <div>
-        {savedStats!== null && (
-        <p>Headshots: {savedStats.headshots}</p>
- 
-        )}
-      </div>   
-
-      <button className="btn" onClick={saveToOverallStats}>SAVE</button>
+     <button className="btn" onClick={saveToOverallStats}>SAVE</button>
 
       <br/>
       <br/>
       {/* <h4><i>STATS LOADING</i></h4> */}
 
-      {/* Are the stats defined? Do they have at least one property? */}
 
       {/* <div>
           <p>Kills: {theStats?.kills?.value || 'Loading...'}</p>

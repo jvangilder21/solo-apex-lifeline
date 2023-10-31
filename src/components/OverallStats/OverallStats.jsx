@@ -17,6 +17,7 @@ function OverallStats(props) {
   const [heading, setHeading] = useState('OVERALL STATS');
 
   const selectedStats = useSelector((store) => store.selectedStatsReducer.selectedStats); 
+  
   console.log(selectedStats);
 
   const AddStats = (event) => {
