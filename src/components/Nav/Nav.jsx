@@ -32,6 +32,10 @@ function Nav() {
               Overall Stats 
             </Link>
 
+            <Link className="navLink" to="/challenges">
+              Challenges 
+            </Link>
+
             <Link className="navLink" to="/info">
               Ranked Info 
             </Link>

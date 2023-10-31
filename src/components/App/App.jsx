@@ -15,6 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import AddStats from '../AddStats/AddStats';
+import ChallengesTracked from '../ChallengesTracked/ChallengesTracked';
 import EditStats from '../EditStats/EditStats';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -52,6 +53,7 @@ function App() {
             <AboutPage />
           </Route>
 
+          
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
@@ -76,6 +78,15 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
+            path="/challenges"
+          >
+            <ChallengesTracked />
+          </ProtectedRoute>
+          
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
             path="/EditStats"
           >
             <EditStats />
@@ -91,7 +102,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows OverallStats else shows LoginPage
             exact
             path="/overallStats"
           >

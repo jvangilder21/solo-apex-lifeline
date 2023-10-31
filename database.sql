@@ -10,7 +10,7 @@ CREATE TABLE "user" (
 );
 
 -- Latest stats table:
-CREATE TABLE stats (
+CREATE TABLE "stats" (
 	id SERIAL PRIMARY KEY,
 	user_id INT NOT NULL, 
 	kills INT,
@@ -21,3 +21,13 @@ CREATE TABLE stats (
 	kd INT,
 	display_order INT
 );
+
+-- Challenge Tracking Table:
+CREATE TABLE "challenges" (
+    "id" SERIAL PRIMARY KEY,
+    "trackedChallenge" VARCHAR(1000) NOT NULL
+);
+
+INSERT INTO "challenges" ("trackedChallenge")
+VALUES ('Play 5 games with Lifeline'),
+('Get 100000 damage with GIBI!');
