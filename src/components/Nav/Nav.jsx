@@ -36,9 +36,9 @@ function Nav() {
               Challenges 
             </Link>
 
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Ranked Info 
-            </Link>
+            </Link> */}
 
             <LogOutButton className="navLink" />
           </>
