@@ -27,7 +27,7 @@ function EditStats(props) {
 
   const saveToOverallStats = (id) => {
     dispatch({type: 'SET_SELECTED_STATS', payload: editSelectedStats});
-    axios.put(`/api/OverallStats/${id}`, savedStats)
+    axios.post(`/api/OverallStats}`, savedStats)
     .then((response) => {
       console.log('Stats saved to the database!!');
     })
