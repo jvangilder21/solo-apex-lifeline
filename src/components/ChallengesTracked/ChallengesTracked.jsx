@@ -40,7 +40,7 @@ function ChallengesTracked(props) {
 
   const addTrackedChallenge = (event) => {
     event.preventDefault();
-    axios.post(`/api/challengesTracked/${id}`, {trackedChallenge: newTrackedChallenge})
+    axios.post(`/api/challengesTracked`, {trackedChallenge: newTrackedChallenge})
     .then((response) => {
       console.log(response);
       fetchTrackedChallenge();
@@ -85,7 +85,7 @@ function ChallengesTracked(props) {
     fetchTrackedChallenge();
   }, []);
 
-  
+
   return (
     <div>
       <h2>{heading}</h2>
@@ -107,8 +107,8 @@ function ChallengesTracked(props) {
         <thead>
           <tr>
             <th>Challenges</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
 
@@ -131,14 +131,14 @@ function ChallengesTracked(props) {
                 </td>
                 <td>
                   {challenges.id === editingChallenge.id ? (
-                    <Button 
+                    <Button className="Button"
                       variant="contained" 
                       onClick={() => updateTrackedChallenges(
                         challenges.id, 
                         editingChallenge.text
                       )}>Save</Button>
                   ) : (
-                    <Button 
+                    <Button className="Button"
                       variant="contained" 
                       onClick={() => startEditingChallenge(
                         challenges.id, 
@@ -147,9 +147,9 @@ function ChallengesTracked(props) {
                   )}
                 </td>
                 <td>
-                  <Button 
+                  <Button className="Button"
                     variant="contained" 
-                    onClick={() => deleteTrackedChallenges(challenges.id)}>Delete</Button>
+                    onClick={() => deleteTrackedChallenges(challenges.id)}>Completed</Button>
                 </td>
                   
               </tr>
