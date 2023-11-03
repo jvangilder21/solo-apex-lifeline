@@ -1,13 +1,49 @@
 .challengesDisplay {
-    width: 75%;
-    height: 500px;
+    width: 70%;
+    height: auto;
     background-color: rgb(60, 55, 49);
     margin: 20px;
+    margin-left: 15%;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 5px 10px 6px rgb(5, 216, 239);
     }
 
-.Button {
-    background-color: rgb(25, 36, 241);
+.buttonTracked {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    background-color: rgba(25, 36, 241, .9);
+    margin: 0px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px rgb(5, 216, 239);
+    color: white;
+}
+
+.addButton{
+    padding: 30px;
+}
+
+#add {
+    margin-left: 30px;
+}
+
+.customTextfield {
+    width: 500px;
+    background-color:rgba(118, 166, 198, 0.8);
+    box-shadow: 10px 6px 50px rgb(5, 216, 239);
+    border-radius: 7px;
+    color: white;
+}
+
+.tableHeader{
+    font-size: 36px;
+    color: rgb(251, 247, 247);
+    text-decoration: underline;
+}
+
+td {
+    font-size: 20px;
+    line-height: 3.5;
 }

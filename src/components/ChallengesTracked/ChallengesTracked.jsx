@@ -8,6 +8,7 @@ import './ChallengesTracked.css';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { blue, white } from '@mui/material/colors';
 
 const challengeData = [];
 
@@ -23,9 +24,6 @@ function ChallengesTracked(props) {
     id: null,
     text: '',
   });
-
-
-
 
   const fetchTrackedChallenge = () => {
       axios.get('/api/challengesTracked')
@@ -55,7 +53,6 @@ function ChallengesTracked(props) {
     setEditingChallenge({ id, text });
   };
 
-
   const updateTrackedChallenges = (id) => {
     axios.put(`/api/challengesTracked/${id}`, {trackedChallenge: editingChallenge.text})
     .then((response) => {
@@ -80,24 +77,25 @@ function ChallengesTracked(props) {
     setEditingChallenge({ id: null, text: ''});
   }
 
-
   useEffect(() => {
     fetchTrackedChallenge();
   }, []);
-
 
   return (
     <div>
       <h2>{heading}</h2>
 
       <form onSubmit={addTrackedChallenge}>
+        <div className="addButton">
         <TextField 
         id="outlined-basic" 
         label="New Challenge" 
         variant="outlined" 
         onChange={(event) => setNewTrackedChallenge(event.target.value)}
-        value={newTrackedChallenge}/>
-        <Button variant="contained" type="submit">Add</Button>
+        value={newTrackedChallenge}
+        className="customTextfield"/>
+        <button className="buttonTracked" id="add" variant="contained" type="submit">Add</button>
+        </div>
       </form>
 
       <br/>
@@ -106,9 +104,11 @@ function ChallengesTracked(props) {
       <table className="challengesDisplay">
         <thead>
           <tr>
+            <div className="tableHeader">
             <th>Challenges</th>
             <th></th>
             <th></th>
+            </div>
           </tr>
         </thead>
 
@@ -131,25 +131,25 @@ function ChallengesTracked(props) {
                 </td>
                 <td>
                   {challenges.id === editingChallenge.id ? (
-                    <Button className="Button"
+                    <button className="buttonTracked"
                       variant="contained" 
                       onClick={() => updateTrackedChallenges(
                         challenges.id, 
                         editingChallenge.text
-                      )}>Save</Button>
+                      )}>Save</button>
                   ) : (
-                    <Button className="Button"
+                    <button className="buttonTracked"
                       variant="contained" 
                       onClick={() => startEditingChallenge(
                         challenges.id, 
                         editingChallenge.trackedChallenge
-                      )}>Edit</Button>
+                      )}>Edit</button>
                   )}
                 </td>
                 <td>
-                  <Button className="Button"
+                  <button className="buttonTracked"
                     variant="contained" 
-                    onClick={() => deleteTrackedChallenges(challenges.id)}>Completed</Button>
+                    onClick={() => deleteTrackedChallenges(challenges.id)}>Completed</button>
                 </td>
                   
               </tr>
