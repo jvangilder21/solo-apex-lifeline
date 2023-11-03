@@ -36,6 +36,7 @@ function RegisterForm() {
             value={username}
             required
             onChange={(event) => setUsername(event.target.value)}
+            className="loginInput"
           />
         </label>
       </div>
@@ -48,11 +49,12 @@ function RegisterForm() {
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
+            className="loginInput"
           />
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="btnLogIn" type="submit" name="submit" value="Register" />
       </div>
     </form>
   );

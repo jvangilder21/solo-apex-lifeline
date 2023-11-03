@@ -36,20 +36,24 @@ function UserPage() {
           Giving you the ability to see all your tracked challenges even in the middle of the game.
         </p>
       </div>
+      <br/>
+      <br/>
 
       <br/>
       <br/>
-            <button className="btnHome"
+            <button className="btnOverallTracked"
       onClick={OverallStats} >OVERALL STATS</button>
 
-<button className="btnHome"
+<button className="btnOverallTracked"
       onClick={TrackedChallenges} >TRACKED CHALLENGES</button>
 
-      {/* <button className="btnHome">RANKED</button> */}
+      {/* <button className="btnOverallTracked">RANKED</button> */}
       <br/>
       <br/>
       <br/>
-      <LogOutButton className="btn" />
+      <br/>
+      <br/>
+      <LogOutButton className="btnLogout" />
     </div>
   );
 }

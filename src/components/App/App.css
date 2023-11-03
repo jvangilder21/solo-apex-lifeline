@@ -25,7 +25,7 @@ h2 {
   color: white;
   width: max-content;
   padding: 20px;
-  margin: 30px;
+  margin-bottom: 50px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgb(5, 216, 239);
 
@@ -148,15 +148,43 @@ Form Treatment
 .formPanel {
   box-sizing: border-box;
   width: 400px;
+  height: 500px;
   max-width: 100%;
-  padding: 25px;
+  padding: 40px;
   margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  background-color: rgb(60, 55, 49);
+  border-radius: 15px;
+  box-shadow: 4px 4px 15px rgb(5, 216, 239);
+  /* box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4); */
 }
 
 input {
-  margin: 5px;
-  margin-bottom: 10px;
+  margin: 15px;
+  margin-bottom: 20px;
+}
+
+.loginInput {
+  height: 40px;
+  width: 200px;
+  font-size: 20px;
+}
+
+.btnLogIn {
+  display: inline-block;
+  padding: 15px;
+  border-color: #0609c1;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: rgb(25, 36, 241);
+  color: #f8f8f8;
+  font-size: 1.5rem;
+  outline: 0;
+  cursor: pointer;
+  width: 200px;
+  margin-left: 30%;
+}
+
+.btnLogIn:hover {
+  background-color: #1179e0;
+  text-decoration: none;
 }

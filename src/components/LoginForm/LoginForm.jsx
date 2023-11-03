@@ -41,23 +41,27 @@ function LoginForm() {
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+            className="loginInput"
           />
         </label>
       </div>
+      <br/>
       <div>
         <label htmlFor="password">
-          Password:
+          Password: 
           <input
             type="password"
             name="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            className="loginInput"
           />
         </label>
       </div>
+      <br/>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <input className="btnLogIn" type="submit" name="submit" value="Log In" />
       </div>
     </form>
   );
