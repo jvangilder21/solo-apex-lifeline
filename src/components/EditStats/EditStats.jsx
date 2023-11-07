@@ -88,7 +88,7 @@ const savedStats = {
     <div>
       <h2>{heading}</h2>
 
-  
+      <div className="buttonContainer">
       <button className="btnStats" onClick={() => handleStatSelection({name: 'KILLS', value: theStats?.kills?.value})}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'HEADSHOTS', value: theStats?.headshots?.value})}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'DAMAGE', value: theStats?.damage?.value})}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
@@ -97,41 +97,49 @@ const savedStats = {
       <button className="btnStats" onClick={() => handleStatSelection({name: 'FINISHERS', value: theStats?.executions?.value})}>FINISHERS <br/>{theStats?.executions?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'REVIVES', value: theStats?.revives?.value})}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
+      </div>
 
+      {/* <br/>
       <br/>
       <br/>
-      <br/>
-      <br/>
-      <button className="btn"
-      onClick={OverallStats}>BACK</button>
+      <br/> */}
 
-      <p className="statDisplay"> 
+      <div className="selectedStatsContainer statDisplay">
+      <p> 
             
         {editSelectedStats && editSelectedStats.length > 0 ? (
           // This will display selected stats if there are any.
           <div>
-            <p>New Selected Stats:</p>
+            <p className="editStatHeader">New Selected Stats:</p>
+            <div className="editStatSelectedDisplay">
             {editSelectedStats.map((stat, index) => (
               <p key={index}>{stat.name}: {stat.value}</p>
             ))}
+            </div>
           </div>
         ) : (
           // Message if not stats are selected
-          <p>Select Stats above to compare and save new stats order!</p>
+          <p className="editStatHeader">Select Stats above to compare and save new stats order!</p>
         )} 
         <br/>
         <br/>
         <br/>
-          <p>Current Selected Stats:</p>
+          <p className="editStatHeader">Current Selected Stats:</p>
+          <div className="editStatSelectedDisplay">
           {selectedStats.map((stat) => (
           <p key={stat.name}>{stat.name} : {stat.value}</p>
           ))}
+          </div>
       </p>
+      </div>
 
       <br/>
       <br/>
-      <button className="btn" onClick={saveToOverallStats}>SAVE</button>
-
+      
+      <div className="backAndSaveContainer">
+      <button className="btn" id="backBtn" onClick={OverallStats}>BACK</button>
+      <button className="btn" id="saveBtn" onClick={saveToOverallStats}>SAVE</button>
+      </div>
     </div>
   );
 }

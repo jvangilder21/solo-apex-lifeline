@@ -1,15 +1,58 @@
 .btnStats {
     display: inline-block;
     padding: 35px;
-    margin-left: 5%;
+    margin-left: 2.5%;
     width: 350px;
-    gap:10px;
     border-color: #0609c1;
     border-width: 1px 1px 3px;
-    border-radius: 4px;
+    border-radius: 20px;
     background-color: rgb(25, 36, 241);
     color: #f8f8f8;
     font-size: 2.1rem;
     outline: 0;
     cursor: pointer;
   }
+
+.btnStats:hover {
+    background-color: #1179e0;
+    text-decoration: none;
+}
+
+.buttonContainer {
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    
+}
+
+.selectedStatsContainer {
+    margin-left: 10%;
+}
+
+
+.statDisplay {
+    width: 75%;
+    height: auto;
+    background-color: rgb(60, 55, 49);
+    margin: 20px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 5px 10px 6px rgb(5, 216, 239);
+    margin-left: 10%;
+}
+
+.editStatHeader {
+    font-size: 30px;
+}
+.backAndSaveContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+}
+
+.editStatSelectedDisplay {
+    font-size: 24px;
+}
+    

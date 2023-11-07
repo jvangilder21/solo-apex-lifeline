@@ -1,7 +1,7 @@
 .btnStats {
     display: inline-block;
     padding: 35px;
-    margin-left: 2.5%;
+    margin-left: 5%;
     width: 350px;
     border-color: #0609c1;
     border-width: 1px 1px 3px;
@@ -19,7 +19,7 @@ text-decoration: none;
 }
 
 .buttonContainer {
-margin-left: 5%;
+margin-left: 10%;
 margin-top: 5%;
 margin-bottom: 3%;
 

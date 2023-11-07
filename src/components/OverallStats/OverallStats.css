@@ -45,7 +45,7 @@ text-decoration: none;
 .statNameValue p {
     border: 3px solid blue;
     padding: 30px;
-    margin-left: 10%;
+    /* margin-left: 5%; */
     text-align: center;
     background-color: rgb(23, 21, 18);
     width: 75%;
