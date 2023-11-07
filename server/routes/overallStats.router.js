@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
   // GET route code here
   console.log('/OverallStats GET route');
     const userId = req.user.id;
+    const username = req.query.username;
 
     // Query to retreive stats ordered by display_order
     const queryText = `

@@ -10,7 +10,7 @@ import './EditStats.css';
 function EditStats(props) {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
-  const store = useSelector((store) => store);
+  const user = useSelector((store) => store.user);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -38,6 +38,22 @@ function EditStats(props) {
     history.push('/overallStats')
   }
 
+  // const saveToOverallStats = (id) => {
+  //   dispatch({type: 'SET_SELECTED_STATS', payload: editSelectedStats});
+  //   axios.post(`/api/OverallStats}`, savedStats,{
+  //     params: {
+  //       username: user.username,
+  //     }
+  //   })
+  //   .then((response) => {
+  //     console.log('Stats saved to the database!!');
+  //   })
+  //   .catch((error) => {
+  //     console.log('PUTaxios: Error saving stats:', error);
+  //   })
+  //   history.push('/overallStats')
+  // }
+
   const handleStatSelection = (stat) => {
     console.log('THIS IS OUR STAT', stat);
 
@@ -55,9 +71,26 @@ useEffect(() => {
   // fetchOrder();
 }, []);
 
+// const fetchStats = () => {
+//   console.log("Running FetchStats");
+//   axios.get('/api/AddStats')
+//   .then((response) => {
+//     const totalData = response.data.total;
+   
+//     console.log('totalData log', totalData)
+//     setTheStats(totalData)
+//   }).catch((error) => {
+//     console.log('GETaxios get error', error);
+//   })
+// }
+
 const fetchStats = () => {
   console.log("Running FetchStats");
-  axios.get('/api/AddStats')
+  axios.get('/api/AddStats', {
+    params: {
+      username: user.username,
+    }
+  })
   .then((response) => {
     const totalData = response.data.total;
    
