@@ -24,11 +24,11 @@ h2 {
   background-color: #191818;
   color: white;
   width: max-content;
-  padding: 20px;
-  margin-bottom: 50px;
+  padding: 30px;
+  margin-bottom: 40px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgb(5, 216, 239);
-
+  margin-left: 2%;
 }
 
 /* --------------------------------------------------------------------------------

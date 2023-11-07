@@ -34,9 +34,9 @@ function OverallStats(props) {
       <br/>
       <br/>
 
-      <button className="btnStats"
+      <button className="btnOverallStats"
       onClick={AddStats} >ADD YOUR STATS</button>
-      <button className="btnStats"
+      <button className="btnOverallStats"
       onClick={EditStats} >EDIT STATS</button>
       <br/>
       <br/>
@@ -49,14 +49,16 @@ function OverallStats(props) {
         {selectedStats && selectedStats.length > 0 ? (
           // This will display selected stats if there are any.
           <div>
-            <p>Selected Stats:</p>
+            <p className="selectedStatsHeader">Selected Stats:</p>
+            <div className="statNameValue">
             {selectedStats.map((stat, index) => (
               <p key={index}>{stat.name}: {stat.value}</p>
             ))}
+            </div>
           </div>
          ) : (
           // Message if not stats are selected
-          <p>Please select Add Stats to add stats to this page!</p>
+          <p className="selectedStatsHeader">Please select Add Stats to add stats to this page!</p>
         )} 
       </p>
 
