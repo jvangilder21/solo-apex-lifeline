@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import './EditStats.css';
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the

@@ -1,0 +1,15 @@
+.btnStats {
+    display: inline-block;
+    padding: 35px;
+    margin-left: 5%;
+    width: 350px;
+    gap:10px;
+    border-color: #0609c1;
+    border-width: 1px 1px 3px;
+    border-radius: 4px;
+    background-color: rgb(25, 36, 241);
+    color: #f8f8f8;
+    font-size: 2.1rem;
+    outline: 0;
+    cursor: pointer;
+  }

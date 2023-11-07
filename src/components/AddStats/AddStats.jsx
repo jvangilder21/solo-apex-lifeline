@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import './AddStats.css';
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -117,7 +118,7 @@ function AddStats(props) {
     <div className="container">
       <h2>{heading}</h2>
 
-
+      <div className="buttonContainer">
       <button className="btnStats" onClick={() => handleStatSelection({name: 'KILLS', value: theStats?.kills?.value})}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'HEADSHOTS', value: theStats?.headshots?.value})}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'DAMAGE', value: theStats?.damage?.value})}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
@@ -126,7 +127,7 @@ function AddStats(props) {
       <button className="btnStats" onClick={() => handleStatSelection({name: 'FINISHERS', value: theStats?.executions?.value})}>FINISHERS <br/>{theStats?.executions?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'REVIVES', value: theStats?.revives?.value})}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
-
+      </div>
       {/* <button className="btnStats" onClick={() => handleStatSelection(setKills(theStats?.kills?.value))}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button> */}
       {/* <button className="btnStats" onClick={() => setHeadshots(theStats?.headshots?.value)}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => setDamage(theStats?.damage?.value)}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
@@ -136,23 +137,28 @@ function AddStats(props) {
       <button className="btnStats" onClick={() => setRevives(theStats?.revives?.value)}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button> */}
       {/* <button className="btnStats" onClick={() => setKd(theStats?.kd?.value)}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button> */}
 
+      {/* <br/>
       <br/>
       <br/>
-      <br/>
-      <br/>
+      <br/> */}
 
-      <button className="btn" onClick={backToOverallStats}>BACK</button>
 
       <br/>
       <br/>
+      <div className="selectedStatsContainer statDisplay">
       <h4><i>SELECTED STATS:</i></h4>
       {/* {JSON.stringify(selectedStats[0])} */}
-     
+        <div className="statSelectedDisplay">
         {selectedStats.map((stat) => (
         <p key={stat.name}>{stat.name} : {stat.value}</p>
         ))}
+        </div>
+      </div>
 
-     <button className="btn" onClick={saveToOverallStats}>SAVE</button>
+      <div className="backAndSaveContainer">
+      <button className="btn" id="backBtn" onClick={backToOverallStats}>BACK</button>
+      <button className="btn" id="saveBtn" onClick={saveToOverallStats}>SAVE</button>
+      </div>
 
       <br/>
       <br/>
