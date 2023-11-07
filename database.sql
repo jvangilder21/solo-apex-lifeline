@@ -22,12 +22,23 @@ CREATE TABLE "stats" (
 	display_order INT
 );
 
--- Challenge Tracking Table:
-CREATE TABLE "challenges" (
+-- -- Challenge Tracking Table:
+-- CREATE TABLE "challenges" (
+--     "id" SERIAL PRIMARY KEY,
+--     "trackedChallenge" VARCHAR(1000) NOT NULL
+-- );
+
+-- INSERT INTO "challenges" ("trackedChallenge")
+-- VALUES ('Play 5 games with Lifeline'),
+-- ('Get 100000 damage with GIBI!');
+
+--New Tracking Table:
+CREATE TABLE "challenge" (
     "id" SERIAL PRIMARY KEY,
+	"user_id" INT REFERENCES "user" ("id"),
     "trackedChallenge" VARCHAR(1000) NOT NULL
 );
 
-INSERT INTO "challenges" ("trackedChallenge")
+INSERT INTO "challenge" ("trackedChallenge")
 VALUES ('Play 5 games with Lifeline'),
 ('Get 100000 damage with GIBI!');
