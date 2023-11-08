@@ -1,0 +1,23 @@
+.aboutContainer {
+    width: 75%;
+    height: auto;
+    background-color: rgb(60, 55, 49);
+    margin: 20px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 5px 10px 6px rgb(5, 216, 239);
+    margin-left: 10%; 
+    margin-top: 5%;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+.aboutSmallText {
+    font-size: 20px;
+}
+#aboutCreatedFor {
+    margin-left: 5%;
+    margin-right: 5%;
+}

@@ -26,7 +26,7 @@ function UserPage() {
 
       <div className="userDisplay">
         <h3>
-          Welcome Apex Legends players! 
+          Welcome Apex Legends player! 
         </h3>
         <br/>
         <p>
@@ -41,12 +41,11 @@ function UserPage() {
 
       <br/>
       <br/>
-            <button className="btnOverallTracked"
-      onClick={OverallStats} >OVERALL STATS</button>
+      <div className="userButtons">
+      <button className="btnOverallTracked" onClick={OverallStats} >OVERALL STATS</button>
 
-<button className="btnOverallTracked"
-      onClick={TrackedChallenges} >TRACKED CHALLENGES</button>
-
+      <button className="btnOverallTracked" onClick={TrackedChallenges} >TRACKED CHALLENGES</button>
+      </div>
       {/* <button className="btnOverallTracked">RANKED</button> */}
       <br/>
       <br/>

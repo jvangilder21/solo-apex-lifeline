@@ -3,7 +3,7 @@
     height: 200px;
     background-color: rgb(60, 55, 49);
     margin: 20px;
-    margin-left: 5%;
+    margin-left: 10%;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 5px 10px 6px rgb(5, 216, 239);
@@ -20,13 +20,13 @@
     font-size: 3.0rem;
     outline: 0;
     cursor: pointer;
-    margin-left: 5%;
+    margin-left: 3%;
 }
 
 .btnOverallTracked:hover {
     background-color: #1179e0;
     text-decoration: none;
-  }
+}
 
 .btnLogout {
 display: inline-block;
@@ -40,10 +40,14 @@ font-size: 1.2rem;
 outline: 0;
 cursor: pointer;
 position: absolute;
-right: 5%;
+right: 10%;
 }
 
 .btnLogout:hover {
 background-color: #1179e0;
 text-decoration: none;
+}
+
+.userButtons {
+    margin-left: 7%;
 }
