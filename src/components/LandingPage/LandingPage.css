@@ -2,6 +2,8 @@
 Grid
 -------------------------------------------------------------------------------- */
 
+
+
 .grid {
   display: flex;
   flex: 0 1 auto;
@@ -11,6 +13,9 @@ Grid
   /* defaults to 'flex-start' */
   justify-content: flex-start;
   align-items: flex-start;
+  margin-left: 10%;
+  margin-right: 5%;
+  margin-top: 5%;
 }
 
 .grid-col {
@@ -56,7 +61,14 @@ Grid
 
 .grid-col_8 {
   flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
+  /* max-width: 66.66666667%; */
+  max-width: 50%;
+  background-color: rgb(60, 55, 49);
+  border-radius: 20px;
+  box-shadow: 5px 10px 10px rgb(5, 216, 239);
+  padding: 3.25%;
+  margin-left: 4%;
+
 }
 
 .grid-col_9 {
@@ -78,3 +90,5 @@ Grid
   flex-basis: 100%;
   max-width: 100%;
 }
+
+
