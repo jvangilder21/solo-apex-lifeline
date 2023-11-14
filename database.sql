@@ -18,8 +18,7 @@ CREATE TABLE "stats" (
 	damage INT,
 	executions INT, 
 	revives INT,
-	kd INT,
-	display_order INT
+	kd INT
 );
 
 --New Tracking Table:
