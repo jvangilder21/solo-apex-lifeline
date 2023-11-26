@@ -38,22 +38,6 @@ function EditStats(props) {
     history.push('/overallStats')
   }
 
-  // const saveToOverallStats = (id) => {
-  //   dispatch({type: 'SET_SELECTED_STATS', payload: editSelectedStats});
-  //   axios.post(`/api/OverallStats}`, savedStats,{
-  //     params: {
-  //       username: user.username,
-  //     }
-  //   })
-  //   .then((response) => {
-  //     console.log('Stats saved to the database!!');
-  //   })
-  //   .catch((error) => {
-  //     console.log('PUTaxios: Error saving stats:', error);
-  //   })
-  //   history.push('/overallStats')
-  // }
-
   const handleStatSelection = (stat) => {
     console.log('THIS IS OUR STAT', stat);
 
@@ -67,22 +51,7 @@ function EditStats(props) {
 
 useEffect(() => {
   fetchStats();
-  // dispatch({type: 'FETCH_SELECTED_STATS'});
-  // fetchOrder();
 }, []);
-
-// const fetchStats = () => {
-//   console.log("Running FetchStats");
-//   axios.get('/api/AddStats')
-//   .then((response) => {
-//     const totalData = response.data.total;
-   
-//     console.log('totalData log', totalData)
-//     setTheStats(totalData)
-//   }).catch((error) => {
-//     console.log('GETaxios get error', error);
-//   })
-// }
 
 const fetchStats = () => {
   console.log("Running FetchStats");
@@ -132,11 +101,6 @@ const savedStats = {
       <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
       </div>
 
-      {/* <br/>
-      <br/>
-      <br/>
-      <br/> */}
-
       <div className="selectedStatsContainer statDisplay">
       <p> 
             
@@ -151,7 +115,7 @@ const savedStats = {
             </div>
           </div>
         ) : (
-          // Message if not stats are selected
+          // Message if no stats are selected
           <p className="editStatHeader">Select Stats above to compare and save new stats order!</p>
         )} 
         <br/>

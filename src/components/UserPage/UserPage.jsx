@@ -21,7 +21,6 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      {/* <p>Your ID is: {user.id}</p> */}
       <br/>
 
       <div className="userDisplay">
@@ -46,7 +45,6 @@ function UserPage() {
 
       <button className="btnOverallTracked" onClick={TrackedChallenges} >TRACKED CHALLENGES</button>
       </div>
-      {/* <button className="btnOverallTracked">RANKED</button> */}
       <br/>
       <br/>
       <br/>

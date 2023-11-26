@@ -2,7 +2,6 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
 router.get('/', (req, res) => {
   // GET route code here
   console.log('/OverallStats GET route');
@@ -31,45 +30,11 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-// router.post('/', (req, res) => {
-//   // POST route code here
-
-//   const {statsData} = req.body;
-//   console.log(req.body);
-
-//   const queryText = `
-//     INSERT INTO "stats" ("user_id", "kills", "headshots", 
-//     "damage", "executions", "revives", "kd")
-//     VALUES ( $1, $2, $3, $4, $5, $6, $7)
-//     RETURNING *;`;
-
-//     const values = [
-//       req.user.id, 
-//       statsData.total?.kills.value,
-//       statsData.total?.headshots.value,
-//       statsData.total?.damage.value,
-//       statsData.total?.executions.value,
-//       statsData.total?.revives.value,
-//       statsData.total?.kd.value
-//     ];
-//     pool.query(queryText, values)
-//     .then((result) => {
-//       res.sendStatus(result.rows[0]);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//       res.sendStatus(500);
-//     });
-// });
 
 router.post('/', (req, res) => {
   // POST route code here
 
   const statsData = req.body;
-  // console.log('This is from the POST route:', req.body);
-  // console.log('statsData.total', statsData)
-  // console.log('kills value:', req.body.kills);
-  
   
   const queryText = `
     INSERT INTO "stats" ("user_id", "kills", "headshots", 

@@ -8,6 +8,7 @@ Apex Lifeline is an application that allows an Apex Legends player to track and 
 [Apex Lifeine](https://salty-beyond-11648-3029f82166f3.herokuapp.com/#/home) is hosted on Heroku. To test how the app works please enter the following:
 
 Username: GetSkittyWitIt
+
 Password: ApexLifeline
 
 This will load and show you how certain stats load into the same. If stats say "Loading..." instead of a number this means that the user either has not:

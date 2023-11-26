@@ -56,7 +56,7 @@ function OverallStats(props) {
             </div>
           </div>
          ) : (
-          // Message if not stats are selected
+          // Message if no stats are selected
           <p className="selectedStatsHeader">Please select Add Stats to add stats to this page!</p>
         )} 
       </p>

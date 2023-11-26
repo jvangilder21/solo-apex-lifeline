@@ -25,16 +25,12 @@ function AddStats(props) {
   }
 
   const saveToOverallStats = () => {
-    // const selectedStatsValues = selectedStats.map((stat) => stat.value);
-    // console.log(selectedStatsValues);
 
     // dispatching the selectedStats to the redux store.
     dispatch({type: 'SET_SELECTED_STATS', payload: selectedStats})
-    // console.log('THIS IS OUR selectedStats', preStat);.
 
     // Making a POST reqeust to save the selected Stats in the database
     console.log('logging the savedStats', savedStats);
-    // axios.post('/api/OverallStats', {statsData: selectedStatsValues})
     axios.post(`/api/OverallStats`, savedStats)
     .then((response) => {
       console.log('Stats saved to the database!!');
@@ -42,7 +38,7 @@ function AddStats(props) {
     .catch((error) => {
       console.log('POSTaxios: Error saving stats:', error);
     })
-    // // Pushing the user back to the overallStats page
+    // Pushing the user back to the overallStats page
     history.push('/EditStats')
     history.push('/overallStats')
     
@@ -58,43 +54,12 @@ function AddStats(props) {
         setSelectedStats([...selectedStats, stat]);
         console.log(selectedStats);
       }
-      
-      // if (selectedStats.includes(stat)) {
-      //   setSelectedStats(selectedStats.filter((selectedStat) => selectedStat !== stat));
-      // } else {
-      //   setSelectedStats([...selectedStats, stat]);
-      //   console.log(selectedStats);
-      // }
   };
 
   useEffect(() => {
     fetchStats();
-    // dispatch({type: 'FETCH_SELECTED_STATS'});
-    // fetchOrder();
   }, []);
 
-  // const fetchOrder = () => {
-  //   axios.get('/stats').then((response) => {
-  //     if (response.data.length > 0) {
-  //       fetchStats();
-  //     } else {
-  //       alert('Please select stats!');
-  //     }
-  //   })
-  // }
-
-  //  const fetchStats = () => {
-  //   console.log("Running FetchStats");
-  //   axios.get('/api/AddStats')
-  //   .then((response) => {
-  //     const totalData = response.data.total;
-     
-  //     console.log('totalData log', totalData)
-  //     setTheStats(totalData)
-  //   }).catch((error) => {
-  //     console.log('GETaxios get error', error);
-  //   })
-  // }
 
   const fetchStats = () => {
     console.log("Running FetchStats");
@@ -145,26 +110,11 @@ function AddStats(props) {
       <button className="btnStats" onClick={() => handleStatSelection({name: 'REVIVES', value: theStats?.revives?.value})}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button>
       <button className="btnStats" onClick={() => handleStatSelection({name: 'KD', value: theStats?.kd?.value})}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button>
       </div>
-      {/* <button className="btnStats" onClick={() => handleStatSelection(setKills(theStats?.kills?.value))}>KILLS <br/>{theStats?.kills?.value || 'Loading...'}</button> */}
-      {/* <button className="btnStats" onClick={() => setHeadshots(theStats?.headshots?.value)}>HEADSHOTS <br/>{theStats?.headshots?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => setDamage(theStats?.damage?.value)}>DAMAGE <br/>{theStats?.damage?.value || 'Loading...'}<br/></button>
-      <br/>
-      <br/>
-      <button className="btnStats" onClick={() => setExecutions(theStats?.executions?.value)}>EXECUTIONS <br/>{theStats?.executions?.value || 'Loading...'}</button>
-      <button className="btnStats" onClick={() => setRevives(theStats?.revives?.value)}>REVIVES <br/>{theStats?.revives?.value || 'Loading...'}</button> */}
-      {/* <button className="btnStats" onClick={() => setKd(theStats?.kd?.value)}>KD <br/>{theStats?.kd?.value || 'Loading...'}<br/></button> */}
-
-      {/* <br/>
-      <br/>
-      <br/>
-      <br/> */}
-
-
+  
       <br/>
       <br/>
       <div className="selectedStatsContainer statDisplay">
       <h4><i>SELECTED STATS:</i></h4>
-      {/* {JSON.stringify(selectedStats[0])} */}
         <div className="statSelectedDisplay">
         {selectedStats.map((stat) => (
         <p key={stat.name}>{stat.name} : {stat.value}</p>
@@ -179,21 +129,8 @@ function AddStats(props) {
 
       <br/>
       <br/>
-      {/* <h4><i>STATS LOADING</i></h4> */}
-
-
-      {/* <div>
-          <p>Kills: {theStats?.kills?.value || 'Loading...'}</p>
-          <p>Headshots: {theStats?.headshots?.value || 'Loading...'}</p>
-          <p>Damage: {theStats?.damage?.value || 'Loading...'}</p>
-          <p>Executions: {theStats?.executions?.value || 'Loading...'}</p>
-          <p>Revives: {theStats?.revives?.value || 'Loading...'}</p>
-          <p>KD: {theStats?.kd?.value || 'Loading...'}</p>
-      </div> */}
-
 
   </div>
-
 
   );
 }

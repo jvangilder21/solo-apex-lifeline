@@ -5,21 +5,7 @@ const router = express.Router();
 /**
  * GET route template
  */
-// router.get('/', (req, res) => {
-//   // GET route code here
 
-//   const queryText = 'SELECT * FROM "challenge" ORDER BY id ASC;';
-
-//     pool.query(queryText)
-//     .then((result) => {
-//         console.log(`Challenge from the database`, result);
-//         res.send(result.rows);
-//     })
-//     .catch((error) => {
-//         console.log(`GET ROUTER FAILED`,error);
-//         res.sendStatus(500);
-//     })
-// });
 router.get('/', (req, res) => {
     // GET route code here
     const userId = req.user.id;
@@ -45,9 +31,7 @@ router.post('/', (req, res) => {
   const trackedChallenge = req.body.trackedChallenge;
 
   console.log("In POST");
-//   const queryText = `INSERT INTO "challenge" ("trackedChallenge") VALUES ($1);`;
   const queryText = `INSERT INTO "challenge" ("user_id", "trackedChallenge") VALUES ($1, $2) RETURNING id;`;
-//   pool.query(queryText, [req.body.trackedChallenge])
   pool.query(queryText, [userId, trackedChallenge])
       .then((result) => {
           console.log(`Added tracked challenge to the database`, req.body.trackedChallenge);
